@@ -1,6 +1,6 @@
 # vue-music
 
-> vue2.0全家桶  
+> vue2.0全家桶
 
 ## Build Setup
 

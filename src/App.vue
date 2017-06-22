@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-   <div>hellow word</div>
+    <m-header></m-header>
+    <div>123</div>
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
+  import MHeader from 'components/m-header/m-header'
+
 export default {
-  name: 'app'
+  components : MHeader
 }
 </script>
 
 <style  scoped lang="stylus" rel="stylesheet/stylus">
-  @import "~common/stylus/variable.styl"
-  #app
-    color : $color-theme
+
 </style>
