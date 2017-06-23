@@ -1,6 +1,10 @@
 # vue-music
 
+<<<<<<< HEAD
 > vue2.0全家桶
+=======
+> 
+>>>>>>> 0a43bbfe0e80af5f9a99f009ab4050fe8c430604
 
 ## Build Setup
 
