@@ -1,11 +1,17 @@
 <template>
-  <div class="recommend">
+  <div class="recommend" ref="recommend">
     <div class="recommend-content">
       <div class="slider-wrapper">
-
+        <slider>
+          <div v-for="item in recomments">
+            <a :href="item.linkUrl">
+              <img :src="item.picUrl">
+            </a>
+          </div>
+        </slider>
       </div>
       <div class="recommend-list">
-        <h1 class="recommend-tittle">热门歌单推荐</h1>
+        <h1 class="list-title">热门歌单推荐</h1>
         <ul>
 
         </ul>
@@ -14,12 +20,40 @@
   </div>
 </template>
 
-<script>
-    export default {}
+<script type="text/ecmascript-6">
+    import Slider from 'base/slider/slider'
+    import {getRecommend} from 'api/recommend'
+    import {ERR_OK} from 'api/config'
+
+
+ export default {
+   data() {
+     return {
+       recomments: []
+     }
+   },
+   created() {
+     this._getRecommend()
+   },
+   methods: {
+     _getRecommend(){
+       getRecommend().then((res) => {
+         if (res.code === ERR_OK) {
+            this.recomments = (res.data.slider)
+         }
+       })
+     }
+   },
+   components: {
+     Slider
+   }
+ }
+
 </script>
 
-<style scoped lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" scoped rel="stylesheet/stylus">
   @import "~common/stylus/variable"
+
 
   .recommend
     position: fixed
@@ -67,6 +101,5 @@
         width: 100%
         top: 50%
         transform: translateY(-50%)
-
 
 </style>
