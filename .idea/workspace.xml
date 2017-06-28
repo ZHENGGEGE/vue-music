@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d64c6931-1415-4c34-9272-22862c78a865" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/base/loading/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/base/loading/loading.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/recommend/recommend.vue" afterPath="$PROJECT_DIR$/src/components/recommend/recommend.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
-    </list>
+    <list default="true" id="d64c6931-1415-4c34-9272-22862c78a865" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -47,13 +40,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recommend.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="recommend.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/recommend/recommend.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+            <state relative-caret-position="242">
+              <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
               <folding>
                 <element signature="n#div#0;n#scroll#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#1141#1183#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,28 +56,18 @@
       <file leaf-file-name="loading.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/base/loading/loading.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+            <state relative-caret-position="462">
+              <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scroll.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scroll.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/base/scroll/scroll.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1210">
-              <caret line="55" column="3" lean-forward="false" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/js/dom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+            <state relative-caret-position="242">
+              <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -557,12 +541,12 @@
       <workItem from="1498549692638" duration="2995000" />
       <workItem from="1498555345497" duration="548000" />
       <workItem from="1498574325849" duration="3574000" />
-      <workItem from="1498615099165" duration="4841000" />
+      <workItem from="1498615099165" duration="8272000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71121000" />
+    <option name="totallyTimeSpent" value="74552000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="798" extended-state="6" />
@@ -870,14 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/js/dom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/recommend.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -916,14 +892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/scroll/scroll.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1210">
-          <caret line="55" column="3" lean-forward="false" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,19 +947,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/base/loading/loading.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        <state relative-caret-position="462">
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/recommend/recommend.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+        <state relative-caret-position="242">
+          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
           <folding>
             <element signature="n#div#0;n#scroll#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#1141#1183#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/js/dom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="40" lean-forward="true" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/scroll/scroll.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
