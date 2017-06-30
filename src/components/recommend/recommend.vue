@@ -51,7 +51,7 @@
    created() {
      setTimeout(() => {
        this._getRecommend()
-     }, 2000)
+     }, 1000)
 
      this._getDiscList()
    },
@@ -66,7 +66,7 @@
      _getDiscList(){
        getDiscList().then((res) => {
          if (res.code === ERR_OK) {
-           console.log(res.data)
+           //console.log(res.data)
            this.discList = res.data.list
          }
 

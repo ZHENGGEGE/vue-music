@@ -5,7 +5,7 @@
 import jsonp from 'common/js/jsonp'
 import {commonParams,options} from './config'
 
-export function getSingList() {
+export function getSingerList() {
   const url = "https://c.y.qq.com/v8/fcg-bin/v8.fcg"
   const data = Object.assign({},commonParams,{
     channel:'singer',
@@ -15,8 +15,7 @@ export function getSingList() {
     pagenum:1,
     hostUin:0,
     needNewCode:0,
-    platform:'yqq',
-    g_tk:'5381'
+    platform:'yqq'
   })
   return jsonp(url,data,options)
 }
