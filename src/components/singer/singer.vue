@@ -26,8 +26,10 @@
           getSingerList().then((res) => {
               console.log(res.data)
             if (res.code === ERR_OK) {
-              this.singers = this._normalizeSinger(res.data.list)
-              console.log(this.singers)
+//              this.singers = this._normalizeSinger(res.data.list)
+//              console.log(this.singers)
+              this.singers = res.data.list
+              console.log(this._normalizeSinger(this.singers))
             }
 
           })
@@ -59,6 +61,7 @@
               name: item.Fsinger_name
             }))
           })
+          console.log(map)
         }
       }
     }

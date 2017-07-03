@@ -15,7 +15,8 @@ export function getSingerList() {
     pagenum:1,
     hostUin:0,
     needNewCode:0,
-    platform:'yqq'
+    platform:'yqq',
+    g_tk:1912651463
   })
   return jsonp(url,data,options)
 }
