@@ -9,7 +9,13 @@
                 <span class="name">{{item.name}}</span>
               </li>
             </ul>
-            <div class="list-shortcut"></div>
+            <div class="list-shortcut">
+              <ul>
+                <li v-for="item in shortcutList" class="item">
+                  {{item}}
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
     </scroll>
@@ -24,6 +30,13 @@
               type:Array,
               default:[]
             }
+        },
+        computed: {
+          shortcutList(){
+              return this.data.map((group)=>{
+                  return group.title.substr(0,1)
+              })
+          }
         },
         components:{
             Scroll
