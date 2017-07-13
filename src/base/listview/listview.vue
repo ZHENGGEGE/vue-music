@@ -9,15 +9,16 @@
                 <span class="name">{{item.name}}</span>
               </li>
             </ul>
-            <div class="list-shortcut">
-              <ul>
-                <li v-for="item in shortcutList" class="item">
-                  {{item}}
-                </li>
-              </ul>
-            </div>
           </li>
         </ul>
+      <div class="list-shortcut">
+        <ul>
+          <li v-for="item in shortcutList" class="item">
+            {{item}}
+
+          </li>
+        </ul>
+      </div>
     </scroll>
 </template>
 
