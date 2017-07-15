@@ -11,7 +11,7 @@
             </ul>
           </li>
         </ul>
-      <div class="list-shortcut" @touchstart="onShortTouchStart">
+      <div class="list-shortcut" @touchstart="onShortTouchStart" @touchmove="">
         <ul>
           <li v-for="(item,index) in shortcutList" class="item" :data-index="index">
             {{item}}
