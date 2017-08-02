@@ -26,6 +26,9 @@
   import { getData } from 'common/js/dom'
 
     export default {
+      created(){
+          this.touch = {}
+      },
         props: {
             data: {
               type:Array,
@@ -42,7 +45,11 @@
         methods:{
           onShortTouchStart(e){
             let anchorIndex = getData(e.target,'index')
+            let firstTouch = e.touches[0]
             this.$refs.listview.scrollToElement(this.$refs.listGroup[anchorIndex],0)
+          },
+          onShortTouchMove(e){
+
           }
         },
         components:{
