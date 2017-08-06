@@ -11,7 +11,7 @@
             </ul>
           </li>
         </ul>
-      <div class="list-shortcut" @touchstart="onShortTouchStart" @touchmove="">
+      <div class="list-shortcut" @touchstart="onShortTouchStart" @touchmove="onShortTouchMove">
         <ul>
           <li v-for="(item,index) in shortcutList" class="item" :data-index="index">
             {{item}}
@@ -55,7 +55,7 @@
           onShortTouchMove(e){
             let firstTouch = e.touches[0]
             this.touch.y2 = firstTouch.pageY
-            let delta = (this.touch.y2-this.touch.y1)/ANCHOR_HEIGHT |0
+            let delta = (this.touch.y2-this.touch.y1)/ ANCHOR_HEIGHT | 0
             let anchorIndex = parseInt(this.touch.anchorIndex) + delta
             this._scrollTo(anchorIndex)
           },
