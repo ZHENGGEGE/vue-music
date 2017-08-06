@@ -25,6 +25,8 @@
   import Scroll from 'base/scroll/scroll'
   import { getData } from 'common/js/dom'
 
+  const ANCHOR_HEIGHT = 18
+
     export default {
       created(){
           this.touch = {}
@@ -46,10 +48,18 @@
           onShortTouchStart(e){
             let anchorIndex = getData(e.target,'index')
             let firstTouch = e.touches[0]
+            this.touch.y1 = firstTouch.pageY
+            this.touch.anchorIndex = anchorIndex
             this.$refs.listview.scrollToElement(this.$refs.listGroup[anchorIndex],0)
           },
           onShortTouchMove(e){
-
+            let firstTouch = e.touches[0]
+            this.touch.y2 = firstTouch.pageY
+            let delta = (this.touch.y2-this.touch.y1)/ANCHOR_HEIGHT |0
+            let anchorIndex = this.touch.anchorIndex + delta
+          },
+          _scrollTo(){
+              
           }
         },
         components:{
