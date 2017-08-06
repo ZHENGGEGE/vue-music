@@ -50,16 +50,17 @@
             let firstTouch = e.touches[0]
             this.touch.y1 = firstTouch.pageY
             this.touch.anchorIndex = anchorIndex
-            this.$refs.listview.scrollToElement(this.$refs.listGroup[anchorIndex],0)
+            this._scrollTo(anchorIndex)
           },
           onShortTouchMove(e){
             let firstTouch = e.touches[0]
             this.touch.y2 = firstTouch.pageY
             let delta = (this.touch.y2-this.touch.y1)/ANCHOR_HEIGHT |0
-            let anchorIndex = this.touch.anchorIndex + delta
+            let anchorIndex = parseInt(this.touch.anchorIndex) + delta
+            this._scrollTo(anchorIndex)
           },
-          _scrollTo(){
-              
+          _scrollTo(index){
+            this.$refs.listview.scrollToElement(this.$refs.listGroup[index],0)
           }
         },
         components:{
