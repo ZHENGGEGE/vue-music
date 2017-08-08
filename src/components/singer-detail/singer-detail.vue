@@ -1,11 +1,11 @@
 <template>
-
+  <div class="singer-detail"></div>
 </template>
 
 <script>
     export default {}
 </script>
 
-<style>
-
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  
 </style>
