@@ -83,6 +83,15 @@
               this.scrollY = pos.y
           },
           _scrollTo(index){
+              if(!index && index!==0){
+                  return
+              }
+              //console.log(index)
+            if(index < 0){
+                  index = 0
+            }else if(index > this.listHeight.length - 2){
+                index = this.listHeight.length - 2
+            }
             this.scrollY = -this.listHeight[index]
             this.$refs.listview.scrollToElement(this.$refs.listGroup[index],0)
           },

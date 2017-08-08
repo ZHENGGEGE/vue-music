@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64c6931-1415-4c34-9272-22862c78a865" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/base/listview/listview.vue" afterPath="$PROJECT_DIR$/src/base/listview/listview.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="listview.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/base/listview/listview.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="86" column="78" lean-forward="true" selection-start-line="86" selection-start-column="78" selection-end-line="86" selection-end-column="78" />
+            <state relative-caret-position="148">
+              <caret line="79" column="39" lean-forward="true" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
               <folding>
                 <element signature="e#1009#1048#0" expanded="true" />
               </folding>
@@ -419,12 +418,12 @@
       <workItem from="1501684155739" duration="801000" />
       <workItem from="1501987077200" duration="12975000" />
       <workItem from="1502086590980" duration="730000" />
-      <workItem from="1502107488425" duration="2015000" />
+      <workItem from="1502107488425" duration="3118000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138836000" />
+    <option name="totallyTimeSpent" value="139939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="800" extended-state="6" />
@@ -831,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/base/listview/listview.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="86" column="78" lean-forward="true" selection-start-line="86" selection-start-column="78" selection-end-line="86" selection-end-column="78" />
+        <state relative-caret-position="148">
+          <caret line="79" column="39" lean-forward="true" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
           <folding>
             <element signature="e#1009#1048#0" expanded="true" />
           </folding>
