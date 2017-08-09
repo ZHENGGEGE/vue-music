@@ -1,6 +1,7 @@
 <template>
   <div class="singer">
-    <listview :data="singers"></listview>
+    <listview @select="selectSinger" :data="singers"></listview>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -24,6 +25,13 @@
         this._getSingerList()
       },
       methods: {
+        selectSinger(singer){
+          this.$router.push({
+            path:`/singer/${singer.id}`
+          })
+          this.setSinger(singer)
+
+        },
         _getSingerList(){
           getSingerList().then((res) => {
               console.log(res.data)
@@ -78,7 +86,10 @@
               return a.title.charCodeAt(0) - b.title.charCodeAt(0)
           })
           return hot.concat(ret)
-        }
+        },
+        ...mapMutations({
+          setSinger:'SET_SINGER'
+        })
       },
       components: {
         Listview
