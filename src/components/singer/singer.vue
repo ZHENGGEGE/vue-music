@@ -70,7 +70,7 @@
               name: item.Fsinger_name
             }))
           })
-          console.log(map)
+          //console.log(map)
           //为了得到有序列表，我们需要处理map
           let hot = []
           let ret = []
