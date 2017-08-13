@@ -10,11 +10,11 @@
     computed: {
       ...mapGetters([
           'singer'
-        ]
-      )
+        ])
     },
     created(){
       console.log(this.singer)
+      console.log(123)
 
     }
   }
