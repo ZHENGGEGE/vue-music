@@ -1,6 +1,6 @@
 <template>
   <div class="singer">
-    <listview @select="selectSinger" :data="singers"></listview>
+    <list-view @select="selectSinger" :data="singers"></list-view>
     <router-view></router-view>
   </div>
 </template>
@@ -9,7 +9,7 @@
   import { getSingerList } from 'api/singer'
   import { ERR_OK } from 'api/config'
   import Singer from 'common/js/singer'
-  import Listview from 'base/listview/listview'
+  import ListView from 'base/listview/listview'
   import {mapMutations} from 'vuex'
 
   const HOT_NAME = '热门'
@@ -92,7 +92,7 @@
         })
       },
       components: {
-        Listview
+        ListView
       }
     }
 </script>
