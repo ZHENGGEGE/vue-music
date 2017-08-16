@@ -20,6 +20,7 @@ export default new Vuex.Store({
   mutations,
   strict: debug,
   plugins: debug ? [createLogger()] : []
+
 })
 
 
