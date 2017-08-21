@@ -2,7 +2,11 @@
  * Created by suzheng on 17/7/27.
  */
 const state = {
-  singer: {}
+  singer: {
+
+  }
+
+
 }
 
 export default state
