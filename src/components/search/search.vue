@@ -1,6 +1,7 @@
 <template>
   <div>
     搜索页面
+    构建中
   </div>
 </template>
 
