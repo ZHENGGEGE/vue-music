@@ -22,6 +22,8 @@
 import Scroll from 'base/scroll/scroll'
 import SongList from 'base/song-list/song-list'
 
+const RESERVED_HEIGHT = 40
+
 export default {
   props : {
       bgImage : {
@@ -54,6 +56,7 @@ export default {
   },
   mounted(){
       this.imageHeight = this.$refs.bgImage.clientHeight
+      this.minTranslateY = -this.imageHeight+RESERVED_HEIGHT
       this.$refs.list.$el.style.top=`${this.$refs.bgImage.clientHeight}px`
   },
   methods:{
@@ -63,8 +66,9 @@ export default {
   },
   watch:{
     scrollY(newY) {
-      this.$refs.layer.style['transform'] = `translate3d(0,${newY}px,0)`
-      this.$refs.layer.style['webkitTransform'] = `translate3d(0,${newY}px,0)`
+      let translateY = Math.max(this.minTranslateY,newY)
+      this.$refs.layer.style['transform'] = `translate3d(0,${translateY}px,0)`
+      this.$refs.layer.style['webkitTransform'] = `translate3d(0,${translateY}px,0)`
     }
   },
   components:{
