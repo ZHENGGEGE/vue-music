@@ -21,8 +21,10 @@
 <script>
 import Scroll from 'base/scroll/scroll'
 import SongList from 'base/song-list/song-list'
+import {prefixStyle} from 'common/js/dom'
 
 const RESERVED_HEIGHT = 40
+const transform = prefixStyle('transform')
 
 export default {
   props : {
