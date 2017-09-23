@@ -28,27 +28,28 @@ export function getData(el,name,val) {
 
 let elementStyle = document.createElement('div').style
 
-let vender = (() => {
+let vendor = (() => {
   let transformNames = {
     webkit:'webkitTransform',
-    Moz:'mozTransform',
-    O:'oTransform',
+    Moz:'MozTransform',
+    O:'OTransform',
     ms:'msTransform',
     standard:'transform'
   }
   for(let key in transformNames){
-    if(elementStyle[transformNames[key]]!=='undefined'){
+    if(elementStyle[transformNames[key]] !== undefined){
       return key
     }
   }
   return false
-})
+})()
 export function prefixStyle(style){
-  if(vender === false){
+  if(vendor === false){
     return false
   }
-  if(vender === 'standard'){
+  if(vendor === 'standard'){
     return style
   }
-  return vender + style.charAt(0).toUpperCase() + style.substr(1)
+  return vendor + style.charAt(0).toUpperCase() + style.substr(1)
 }
+

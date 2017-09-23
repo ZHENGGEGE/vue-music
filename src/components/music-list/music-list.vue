@@ -25,6 +25,7 @@ import {prefixStyle} from 'common/js/dom'
 
 const RESERVED_HEIGHT = 40
 const transform = prefixStyle('transform')
+const backdrop = prefixStyle('backdrop-filter')
 
 export default {
   props : {
@@ -72,8 +73,8 @@ export default {
       let zIndex = 0
       let scale = 1
       let blur = 0
-      this.$refs.layer.style['transform'] = `translate3d(0,${translateY}px,0)`
-      this.$refs.layer.style['webkitTransform'] = `translate3d(0,${translateY}px,0)`
+      this.$refs.layer.style[transform] = `translate3d(0,${translateY}px,0)`
+      //this.$refs.layer.style['webkitTransform'] = `translate3d(0,${translateY}px,0)`
       const percent = Math.abs(newY/this.imageHeight)
       if(newY>0){
         scale = 1 + percent
@@ -81,8 +82,8 @@ export default {
       }else{
         blur = Math.min(20*percent,20)
       }
-      this.$refs.filter.style['backdrop-filter']=`blur(${blur})`
-      this.$refs.filter.style['webkitBackdrop-filter']=`blur(${blur})`
+      this.$refs.filter.style[backdrop]=`blur(${blur})`
+      //this.$refs.filter.style['webkitBackdrop-filter']=`blur(${blur})`
       if(newY<this.minTranslateY){
         zIndex = 10
         this.$refs.bgImage.style.paddingTop = 0
@@ -92,8 +93,8 @@ export default {
         this.$refs.bgImage.style.height = 0
       }
       this.$refs.bgImage.style.zIndex = zIndex
-      this.$refs.bgImage.style['transform']=`scale(${scale})`
-      this.$refs.bgImage.style['webkitTransform']=`scale(${scale})`
+      this.$refs.bgImage.style[transform]=`scale(${scale})`
+      //this.$refs.bgImage.style['webkitTransform']=`scale(${scale})`
     }
   },
   components:{
