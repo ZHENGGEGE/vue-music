@@ -8,12 +8,10 @@ const state = {
   singer : {},
   playing : false,
   fullScreen : false,
-  playList : [],
+  playlist : [],
   sequenceList : [],
   mode : playMode.sequence,
-  currentlyIndex : -1
-
-
+  currentIndex : -1
 }
 
 export default state
