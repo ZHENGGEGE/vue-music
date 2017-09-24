@@ -1,10 +1,15 @@
 /**
  * Created by suzheng on 17/7/27.
  */
-const state = {
-  singer: {
 
-  }
+import {playMode} from 'common/js/config'
+
+const state = {
+  singer : {},
+  playing : false,
+  fullScreen : false,
+  playList : [],
+  sequenceList : []
 
 
 }
