@@ -18,7 +18,7 @@
             <div class="middle">
                 <div class="middle-l">
                     <div class="cd-wrapper" ref="cdWrapper">
-                        <div class="cd">
+                        <div class="cd" :class="cdCls">
                             <img :src="currentSong.image" alt="" class="image">
                         </div>
                     </div>
@@ -30,13 +30,13 @@
                         <i class="icon-sequence"></i>
                     </div>
                     <div class="icon i-left">
-                        <i class="icon-prev"></i>
+                        <i @click="prev" class="icon-prev"></i>
                     </div>
                     <div class="icon i-center">
                         <i :class="playIcon" @click="togglePlaying"></i>
                     </div>
                     <div class="icon i-right">
-                        <i class="icon-next"></i>
+                        <i @click="next" class="icon-next"></i>
                     </div>
                     <div class="icon i-right">
                         <i class="icon icon-not-favorite"></i>
@@ -48,14 +48,14 @@
       <transition name="mini">
         <div class="mini-player" v-show="!fullScreen" @click="open">
             <div class="icon">
-                <img :src="currentSong.image" alt="" width="40" height="40">
+                <img :class="cdCls" :src="currentSong.image" alt="" width="40" height="40">
             </div>
             <div class="text">
                 <h2 class="name" v-html="currentSong.name"></h2>
                 <p class="desc" v-html="currentSong.singer"></p>
             </div>
             <div class="control">
-                <i :class="miniIcon" @click.stop="togglePlaying" class="icon-mini"></i>
+                <i :class="miniIcon" class="icon-mini" @click.stop="togglePlaying" ></i>
             </div>
             <div class="control">
                 <i class="icon-playlist"></i>
@@ -74,17 +74,22 @@ const transform = prefixStyle('transform')
 
 export default {
   computed : {
+      cdCls() {
+        return this.playing ? 'play' : 'play pause'
+      },
       playIcon(){
         return this.playing ? 'icon-pause':'icon-play'
       },
       miniIcon(){
         return this.playing ? 'icon-pause-mini':'icon-play-mini'
       },
+      
       ...mapGetters([
           'fullScreen',
           'playlist',
           'currentSong',
-          'playing'
+          'playing',
+          'currentIndex'
       ])
   },
   methods : {
@@ -93,6 +98,22 @@ export default {
       },
       open(){
            this.setFullScreen(true)
+      },
+      prev(){
+        console.log(this.currentIndex)
+        let index = this.currentIndex - 1
+        if(index === -1){
+          index = this.playlist.length
+        }
+        this.setCurrentIndex(index)
+      },
+      next(){
+        console.log(this.currentIndex)
+        let index = this.currentIndex + 1
+        if(index === this.playlist.length){
+          index = 0
+        }
+        this.setCurrentIndex(index)
       },
       enter(el,done){
         const {x,y,scale} = this._getPosAndScale()
@@ -151,7 +172,8 @@ export default {
       },
       ...mapMutations({
           setFullScreen : 'SET_FULL_SCREEN',
-          setPlayingstate : 'SET_PLAYING_STATE'
+          setPlayingstate : 'SET_PLAYING_STATE',
+          setCurrentIndex : 'SET_CURRENT_INDEX'
       })   
   },
   watch : {
@@ -401,8 +423,8 @@ export default {
         .icon-mini
           font-size: 32px
           position: absolute
-          left: 0
-          top: 0
+          //left: 0
+          top: 15px
 
   @keyframes rotate
     0%
