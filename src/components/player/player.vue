@@ -25,17 +25,24 @@
                 </div>
             </div>
             <div class="bottom">
+                <div class="progress-wrapper">
+                  <span class="time time-l">{{format(currentTime)}}</span>
+                  <div class="progress-bar-wrapper">
+
+                  </div>
+                  <span class="time time-r">{{format(currentSong.duration)}}</span>
+                </div>
                 <div class="operators">
                     <div class="icon i-left">
                         <i class="icon-sequence"></i>
                     </div>
-                    <div class="icon i-left">
+                    <div class="icon i-left" :class="disableCls">
                         <i @click="prev" class="icon-prev"></i>
                     </div>
-                    <div class="icon i-center">
+                    <div class="icon i-center"  :class="disableCls">
                         <i :class="playIcon" @click="togglePlaying"></i>
                     </div>
-                    <div class="icon i-right">
+                    <div class="icon i-right"  :class="disableCls">
                         <i @click="next" class="icon-next"></i>
                     </div>
                     <div class="icon i-right">
@@ -62,7 +69,7 @@
             </div>
         </div>
       </transition>
-      <audio :src="currentSong.url" ref="audio"></audio>  
+      <audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error" @timeupdate="updateTime"></audio>  
   </div>
 </template>
 <script>
@@ -73,6 +80,12 @@ import {prefixStyle} from 'common/js/dom'
 const transform = prefixStyle('transform')
 
 export default {
+  data(){
+    return {
+      songReday : false,
+      currentTime : 0
+    }
+  },
   computed : {
       cdCls() {
         return this.playing ? 'play' : 'play pause'
@@ -83,7 +96,9 @@ export default {
       miniIcon(){
         return this.playing ? 'icon-pause-mini':'icon-play-mini'
       },
-      
+      disableCls(){
+        return this.songReday ? '' : 'disable'
+      },
       ...mapGetters([
           'fullScreen',
           'playlist',
@@ -100,20 +115,32 @@ export default {
            this.setFullScreen(true)
       },
       prev(){
-        console.log(this.currentIndex)
+        if(!this.songReday){
+          return
+        }
         let index = this.currentIndex - 1
         if(index === -1){
-          index = this.playlist.length
+          index = this.playlist.length - 1
         }
         this.setCurrentIndex(index)
+        if(!this.playing){
+          this.togglePlaying()
+        }
+        this.songReday = false
       },
       next(){
-        console.log(this.currentIndex)
+        if(!this.songReday){
+          return
+        }
         let index = this.currentIndex + 1
         if(index === this.playlist.length){
           index = 0
         }
         this.setCurrentIndex(index)
+        if(!this.playing){
+          this.togglePlaying()
+        }
+        this.songReday = false
       },
       enter(el,done){
         const {x,y,scale} = this._getPosAndScale()
@@ -153,7 +180,33 @@ export default {
         this.$refs.cdWrapper.style[transform] = ''
       },
       togglePlaying(){
+        if(!this.songReday){
+          return
+        }
         this.setPlayingstate(!this.playing)
+      },
+      ready(){
+        this.songReday = true
+      },
+      error(){
+        this.songReday = true
+      },
+      updateTime(e){
+        this.currentTime = e.target.currentTime
+      },
+      format(interval){
+        interval = interval | 0
+        const minute = interval/60 | 0
+        const second = this._pad(interval%60)
+        return `${minute}:${second}`
+      },
+      _pad(num,n=2){
+        let len = num.toString().length
+        while(len < n){
+          num ='0' + num 
+          len ++
+        }
+        return num
       },
       _getPosAndScale(){
         const targetWidth = 40
