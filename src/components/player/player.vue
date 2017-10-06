@@ -254,7 +254,7 @@ export default {
           list = this.sequenceList
         }
         this.resetCurrentIndex(list)
-        this.setSequenceList(list)
+        this.setPlayList(list)
       },
       resetCurrentIndex(list){
         let index = list.findIndex((item)=>{
