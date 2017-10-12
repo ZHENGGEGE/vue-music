@@ -7,7 +7,7 @@ export function shuffle(arr){
         let j = getRandomInt(0,i)
         let t = arr[i]
         arr[i] = arr[j]
-        arr[j] = arr[i]
+        arr[j] = t
     }
     return arr
 }

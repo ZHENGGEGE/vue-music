@@ -110,7 +110,7 @@ export default {
         return this.currentTime / this.currentSong.duration
       },
       iconMode(){
-        return this.mode === playMode.squence ? 'icon-squence' : this.mode === playMode.random ?'icon-andom':'icon-loop'
+        return this.mode === playMode.sequence ? 'icon-sequence' : this.mode === playMode.loop ?'icon-loop':'icon-random'
       },
       ...mapGetters([
           'fullScreen',
@@ -248,17 +248,17 @@ export default {
         const mode = (this.mode + 1 ) % 3
         this.setPlayMode(mode)
         let list = null
-        if(this.mode == playMode.random){
+        if(mode === playMode.random){
           list = shuffle(this.sequenceList)
         }else{
           list = this.sequenceList
         }
         this.resetCurrentIndex(list)
-        this.setPlayList(list)
+        this.setPlaylist(list)
       },
       resetCurrentIndex(list){
-        let index = list.findIndex((item)=>{
-          return item.id = this.currentSong.id
+        let index = list.findIndex((item) => {
+          return item.id === this.currentSong.id
         })
         this.setCurrentIndex(index)
       },
@@ -267,12 +267,12 @@ export default {
           setPlayingstate : 'SET_PLAYING_STATE',
           setCurrentIndex : 'SET_CURRENT_INDEX',
           setPlayMode : 'SET_PLAY_MODE',
-          setPlayList : 'SET_PLAYLIST'
+          setPlaylist : 'SET_PLAYLIST'
       })   
   },
   watch : {
     currentSong(newSong,oldSong){
-      if(newSong.id == oldSong.id){
+      if(newSong.id === oldSong.id){
         return
       }
       this.$nextTick(()=>{
