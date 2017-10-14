@@ -64,7 +64,11 @@ export default {
            this.$emit('percentChange', percent)
       },
       progressClick(e){
-          this. _offset(e.offsetX)
+          //点击progressbtn时候，e.offsetX获取不正确。
+          //this. _offset(e.offsetX)
+          const rect = this.$refs.progressBar.getBoundingClientRect()
+          const offsetWidth = e.pageX - rect.left
+          this._offset(offsetWidth)
           this._triggerPercent()
       }
   }
