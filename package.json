@@ -20,7 +20,8 @@
     "axios": "^0.16.1",
     "vue-lazyload": "^1.0.3",
     "create-keyframe-animation": "^0.1.0",
-    "js-base64": "^2.1.9"
+    "js-base64": "^2.1.9",
+    "lyric-parser": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
