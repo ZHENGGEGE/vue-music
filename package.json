@@ -2,8 +2,9 @@
   "name": "vue-music",
   "version": "1.0.0",
   "description": "vue app",
-  "author": "suzheng",
+  "author": "suzheng<593012736@qq.com>",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
