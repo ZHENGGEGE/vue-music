@@ -25,6 +25,9 @@
                             <img :src="currentSong.image" alt="" class="image">
                         </div>
                     </div>
+                    <div class="playing-lyric-wrapper">
+                      <div class="playing-lyric">{{playingLyric}}</div>
+                    </div>
                 </div>
                 <scroll class="middle-r" ref="lyricList" :data="currentLyric&&currentLyric.lines">
                     <div class="lyric-wrapper">
@@ -115,7 +118,8 @@ export default {
       radius : 32,
       currentLyric : null,
       currentLineNum : 0,
-      currentShow : 'cd'
+      currentShow : 'cd',
+      playingLyric : ''
     }
   },
   computed : {
@@ -161,13 +165,17 @@ export default {
         if(!this.songReday){
           return
         }
-        let index = this.currentIndex - 1
-        if(index === -1){
-          index = this.playlist.length - 1
-        }
-        this.setCurrentIndex(index)
-        if(!this.playing){
-          this.togglePlaying()
+        if(this.playlist.length === 1){
+          this.loop()
+        }else{ 
+          let index = this.currentIndex - 1
+          if(index === -1){
+            index = this.playlist.length - 1
+          }
+          this.setCurrentIndex(index)
+          if(!this.playing){
+            this.togglePlaying()
+          }
         }
         this.songReday = false
       },
@@ -175,15 +183,20 @@ export default {
         if(!this.songReday){
           return
         }
-        let index = this.currentIndex + 1
-        if(index === this.playlist.length){
-          index = 0
-        }
-        this.setCurrentIndex(index)
-        if(!this.playing){
-          this.togglePlaying()
+        if(this.playlist.length === 1){
+          this.loop()
+        }else{     
+          let index = this.currentIndex + 1
+          if(index === this.playlist.length){
+            index = 0
+          }
+          this.setCurrentIndex(index)
+          if(!this.playing){
+            this.togglePlaying()
+          }                  
         }
         this.songReday = false
+
       },
       enter(el,done){
         const {x,y,scale} = this._getPosAndScale()
@@ -227,6 +240,9 @@ export default {
           return
         }
         this.setPlayingstate(!this.playing)
+        if(this.currentLyric){
+          this.currentLyric.togglePlay()
+        }
       },
       ready(){
         this.songReday = true
@@ -250,6 +266,10 @@ export default {
             this.currentLyric.play()
           }
           console.log(this.currentLyric)
+        }).catch(() => {
+          this.currentLyric = null
+          this.playingLyric = ''
+          this.currentLineNum = 0
         })
       },
       handleLyric({lineNum,txt}){
@@ -260,6 +280,7 @@ export default {
         }else{
           this.$refs.lyricList.scrollTo(0,0,1000)
         }
+        this.playingLyric = txt
       },
       _pad(num,n=2){
         let len = num.toString().length
@@ -285,9 +306,13 @@ export default {
         }
       },
       onProgressBarChange(precent){
-        this.$refs.audio.currentTime = precent * this.currentSong.duration
+        const currentTime = precent * this.currentSong.duration
+        this.$refs.audio.currentTime = currentTime
         if(!this.playing){
           this.togglePlaying()
+        }
+        if(this.currentLyric){
+          this.currentLyric.seek(currentTime*1000)
         }
       },
       changeMode(){
@@ -318,6 +343,9 @@ export default {
       loop(){
         this.$refs.audio.currentTime = 0
         this.$refs.audio.play()
+        if(this.currentLyric){
+          this.currentLyric.seek(0)
+        }
       },
       middleTouchStart(e){
         this.touch.initiated = true
@@ -384,6 +412,9 @@ export default {
     currentSong(newSong,oldSong){
       if(newSong.id === oldSong.id){
         return
+      }
+      if(this.currentLyric){
+        this.currentLyric.stop()
       }
       this.$nextTick(()=>{
         this.$refs.audio.play()
