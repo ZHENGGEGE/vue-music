@@ -423,9 +423,9 @@ export default {
     },
     playing(newplaying){
       const audio = this.$refs.audio
-      this.$nextTick(()=>{
+      setTimeout(()=>{
         newplaying ? audio.play() :audio.pause()
-      })
+      },1000)
     }
   },
   components : {
