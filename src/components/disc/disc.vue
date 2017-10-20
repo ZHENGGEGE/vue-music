@@ -31,7 +31,7 @@ export default {
   },
   methods : {
     _getSongList(){
-      getSongList(this.disc.disstid).then((res) => {
+      getSongList(this.disc.dissid).then((res) => {
         if(res.code === ERR_OK){
           console.log(res.cdlist[0].songlist)
         }
