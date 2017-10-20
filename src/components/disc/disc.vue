@@ -12,6 +12,7 @@ import {getSongList} from 'api/recommend'
 import {ERR_OK} from 'api/config'
 import {createSong} from 'common/js/song'
 
+
 export default {
   components : {
       MusicList
