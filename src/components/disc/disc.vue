@@ -8,6 +8,8 @@
 <script>
 import MusicList from 'components/music-list/music-list'
 import {mapGetters} from 'vuex'
+import {getSongList} from 'api/recommend'
+import {ERR_OK} from 'api/config'
 
 export default {
   components : {
@@ -23,6 +25,18 @@ export default {
     ...mapGetters([
       'disc'
     ])
+  },
+  created () {
+    this._getSongList()
+  },
+  methods : {
+    _getSongList(){
+      getSongList(this.disc.disstid).then((res) => {
+        if(res.code === ERR_OK){
+          console.log(res.cdlist[0].songlist)
+        }
+      })     
+    }
   }
 }
 </script>
