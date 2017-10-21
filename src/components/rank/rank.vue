@@ -2,7 +2,7 @@
   <div class="rank" ref="rank">
     <scroll class="toplist" :data="topList" ref="toplist">
       <ul>
-        <li class="item" v-for="item in topList">
+        <li class="item" v-for="item in topList" @click="selectItem(item)">
           <div class="icon">
             <img v-lazy="item.picUrl" alt="" width="100" height="100">
           </div>
@@ -44,6 +44,11 @@ import {playlistMixin} from 'common/js/mixin'
           this.$refs.rank.style.bottom = bottom
           this.$refs.toplist.refresh()
         },
+        selectItem(item){
+          this.$router.push({
+            path: `/rank/${item.id}`
+          })
+        },
         _getTopList(){
           getTopList().then((res) => {
             if(res.code === ERR_OK){
@@ -52,6 +57,7 @@ import {playlistMixin} from 'common/js/mixin'
             }
           })
         }
+        
       },
       components :{
         Scroll,
