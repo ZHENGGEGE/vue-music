@@ -52,7 +52,6 @@ import {playlistMixin} from 'common/js/mixin'
         _getTopList(){
           getTopList().then((res) => {
             if(res.code === ERR_OK){
-              //console.log(res.data.topList)
               this.topList = res.data.topList
             }
           })
@@ -66,7 +65,7 @@ import {playlistMixin} from 'common/js/mixin'
     }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus" scoped rel="stylesheet/stylus">
   @import "~common/stylus/variable"
   @import "~common/stylus/mixin"
   .rank

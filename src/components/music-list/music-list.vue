@@ -1,6 +1,6 @@
 <template>
   <div class="music-list">
-      <div class="back" @click="back()">
+      <div class="back" @click="back">
           <i class="icon-back"></i>
       </div>
       <h1 class="title" v-html="title"></h1>
@@ -141,9 +141,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import "~common/stylus/variable"
-  @import "~common/stylus/mixin"
-
+   @import "~common/stylus/variable"
+   @import "~common/stylus/mixin"
+   
   .music-list
     position: fixed
     z-index: 100
@@ -216,12 +216,11 @@ export default {
       height: 100%
       background: $color-background
     .list
-      position: fixed
+      position: absolute
       top: 0
       bottom: 0
       width: 100%
       background: $color-background
-      // overflow: hidden
       .song-list-wrapper
         padding: 20px 30px
       .loading-container

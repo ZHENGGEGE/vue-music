@@ -6,9 +6,9 @@
             ref="suggest"
             >
         <ul class="suggest-list">
-            <li class="suggest-item" v-for="item in result">
+            <li class="suggest-item" v-for="item in result" @click="selectItem(item)">
                 <div class="icon">
-                    <i :class="getIconClass(item)"></i>
+                    <i :class="getIconCls(item)"></i>
                 </div>
                 <div class="name">
                     <p class="text" v-html="getDisplayName(item)"></p>
@@ -25,6 +25,8 @@ import {ERR_OK} from 'api/config'
 import {createSong} from 'common/js/song'
 import Scroll from 'base/scroll/scroll'
 import Loading from 'base/loading/loading'
+import Singer from 'common/js/singer'
+import {mapMutations} from 'vuex'
 
 const TYPE_SINGER =  'singer'
 const perpage = 20
@@ -72,7 +74,22 @@ const perpage = 20
                   }
               })
           },
-          getIconClass(item){
+          selectItem(item){
+              if(item.type === TYPE_SINGER){
+                  const singer = new Singer({
+                      id : item.singermid,
+                      name : item.singername
+                  })
+                  this.$router.push({
+                      path : `/search/${singer.id}`
+                  })
+                  this.setSinger(singer)
+              }
+          },
+           ...mapMutations({
+             setSinger:'SET_SINGER'
+          }),
+          getIconCls(item){
               if(item.type === TYPE_SINGER){
                   return 'icon-mine'
               }else{
@@ -107,7 +124,7 @@ const perpage = 20
           },
           _checkMore(data){
               const song = data.song
-              if(!song.list.length||(song.curnum + song.curpage*perpage)>=song.totalnum){
+              if(!song.list.length||(song.curnum + (song.curpage-1)*perpage)>=song.totalnum){
                   this.hasMore = false
               }
           }
