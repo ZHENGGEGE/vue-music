@@ -16,8 +16,6 @@ export function search(query,page,zhida){
     const data = Object.assign({},commonParams,{
         w: query,
         p: page,
-        perpage,
-        n: perpage,
         catZhida: zhida ? 1 : 0,
         zhidaqu: 1,
         t: 0,
@@ -25,9 +23,11 @@ export function search(query,page,zhida){
         ie: 'utf-8',
         sem: 1,
         aggr: 0,
-        remoteplace: 'txt.mqq.all',
-        uin: 0,
-        needNewCode: 1,
+        perpage:20,
+        n: 20,
+        uid: 0,
+        needNewCode: 1,   
+        remoteplace: 'txt.mqq.all',   
         platform: 'h5'
     })
     return jsonp(url,data,options)
