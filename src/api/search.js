@@ -25,10 +25,10 @@ export function search(query,page,zhida,perpage){
         sem: 1,
         aggr: 0,
         n: perpage,
-        uid: 0,
+        uin: 0,
         needNewCode: 1,   
         remoteplace: 'txt.mqq.all',   
-        platform: 'h5'
+        platform: 'h5',
     })
     return jsonp(url,data,options)
 }

@@ -15,7 +15,7 @@
                 </div>
             </li>
             <loading v-show="hasMore" title=""></loading>
-        </ul>
+        </ul>      
     </scroll>
 </template>
 
@@ -28,7 +28,7 @@ import Loading from 'base/loading/loading'
 import Singer from 'common/js/singer'
 import {mapMutations} from 'vuex'
 
-const TYPE_SINGER =  'singer'
+const TYPE_SINGER = 'singer'
 const perpage = 20
 
   export default{
@@ -56,6 +56,7 @@ const perpage = 20
               this.hasMore = true
               this.$refs.suggest.scrollTo(0,0)
               search(this.query,this.page,this.showSinger,perpage).then((res) => {
+                  console.log(res)
                   if(res.code === ERR_OK){
                      this.result = this._genResult(res.data)
                      this._checkMore(res.data)
@@ -70,11 +71,13 @@ const perpage = 20
               search(this.query,this.page,this.showSinger,perpage).then((res) => {
                   if(res.code === ERR_OK){
                       this.result = this.result.concat(this._genResult(res.data))
+                      
                       this._checkMore(res.data)
                   }
               })
           },
           selectItem(item){
+              //console.log(item)
               if(item.type === TYPE_SINGER){
                   const singer = new Singer({
                       id : item.singermid,
@@ -98,11 +101,18 @@ const perpage = 20
           },
           _genResult(data){
               let ret = []
-              if(data.zhida && data.zhida.singerid){
-                  ret.push(...data.zhida, ...{type:TYPE_SINGER})
-              }
+            //   if(data.zhida && data.zhida.singerid){
+            //       ret.push(...data.zhida,...{type:TYPE_SINGER})
+            //       console.log(ret)
+            //   }
+            //此处出错，es6对象扩展语法不熟练
+              if (data.zhida && data.zhida.singerid) {
+                ret.push({...data.zhida, ...{type: TYPE_SINGER}})
+                console.log(ret)
+                }
               if(data.song){
                   ret = ret.concat(this._normalizeSongs(data.song.list))
+                  
               }
               return ret
           },
