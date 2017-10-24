@@ -15,7 +15,10 @@
                 </div>
             </li>
             <loading v-show="hasMore" title=""></loading>
-        </ul>      
+        </ul>
+        <div class="no-result-wrapper" v-show="!hasMore&&!result.length">
+            <no-result title="抱歉,暂无搜索结果"></no-result>
+        </div>      
     </scroll>
 </template>
 
@@ -26,7 +29,8 @@ import {createSong} from 'common/js/song'
 import Scroll from 'base/scroll/scroll'
 import Loading from 'base/loading/loading'
 import Singer from 'common/js/singer'
-import {mapMutations} from 'vuex'
+import {mapMutations,mapActions} from 'vuex'
+import NoResult from 'base/no-result/no-result'
 
 const TYPE_SINGER = 'singer'
 const perpage = 20
@@ -87,11 +91,16 @@ const perpage = 20
                       path : `/search/${singer.id}`
                   })
                   this.setSinger(singer)
+              }else{
+                  this.insertSong(item)
               }
           },
            ...mapMutations({
              setSinger:'SET_SINGER'
           }),
+          ...mapActions([
+              'insertSong'
+          ]),
           getIconCls(item){
               if(item.type === TYPE_SINGER){
                   return 'icon-mine'
@@ -146,7 +155,8 @@ const perpage = 20
       },
       components : {
           Scroll,
-          Loading
+          Loading,
+          NoResult
       }
   }
 </script>
