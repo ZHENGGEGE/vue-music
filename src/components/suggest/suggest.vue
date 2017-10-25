@@ -4,6 +4,8 @@
             :pullup="pullup"
             @scrollToEnd="searchMore"
             ref="suggest"
+            :beforeScroll="beforeScroll"
+            @beforeScroll="listScroll"
             >
         <ul class="suggest-list">
             <li class="suggest-item" v-for="item in result" @click="selectItem(item)">
@@ -51,7 +53,8 @@ const perpage = 20
               page : 1,
               pullup : true,
               result : [],
-              hasMore : true
+              hasMore : true,
+              beforeScroll:true
           }
       },
       methods : {
@@ -140,6 +143,9 @@ const perpage = 20
                   }
               })
               return ret
+          },
+          listScroll(){
+              this.$emit('listScroll')
           },
           _checkMore(data){
               const song = data.song

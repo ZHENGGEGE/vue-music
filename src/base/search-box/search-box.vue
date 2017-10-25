@@ -27,6 +27,9 @@ import {debounce} from 'common/js/util'
         },
         setQuery(query){
             this.query = query
+        },
+         blur(){
+            this.$refs.query.blur()
         }
     },
     created(){
@@ -34,6 +37,7 @@ import {debounce} from 'common/js/util'
             this.$emit('query',newQuery)
         },200))
     }
+   
   }
 </script>
 
