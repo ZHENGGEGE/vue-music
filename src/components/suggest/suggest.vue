@@ -153,6 +153,9 @@ const perpage = 20
               if(!song.list.length||(song.curnum + (song.curpage-1)*perpage)>=song.totalnum){
                   this.hasMore = false
               }
+          },
+          refresh(){
+              this.$refs.suggest.refresh()
           }
       },
       watch : {
