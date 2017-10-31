@@ -86,7 +86,7 @@
                    <i :class="miniIcon" class="icon-mini" @click.stop="togglePlaying"></i>
                 </progress-circle>
             </div>
-            <div class="control" @click="showPlaylist">
+            <div class="control" @click.stop="showPlaylist">
                 <i class="icon-playlist"></i>
             </div>
         </div>

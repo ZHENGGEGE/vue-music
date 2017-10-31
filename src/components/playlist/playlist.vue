@@ -11,7 +11,7 @@
                 </div>
                 <scroll class="list-content" :data="sequenceList" ref="listContent">
                     <ul>
-                        <li class="item" v-for="(item,index) in sequenceList" @click="selectItem(item,index)">
+                        <li class="item" v-for="(item,index) in sequenceList" @click="selectItem(item,index)" ref="listItem">
                             <i class="current" :class="getCurrentIcon(item)"></i>
                             <span class="text">{{item.name}}</span>
                             <span class="like">
@@ -51,7 +51,8 @@ export default {
     ...mapGetters([
       'sequenceList',
       'currentSong',
-      'playlist'
+      'playlist',
+      'mode'
     ])
   },
   methods : {
@@ -59,6 +60,7 @@ export default {
       this.showFlag = true
       setTimeout(() => {
         this.$refs.listContent.refresh()
+        this.scrollToCurrent(this.currentSong)
       },20)
     },
     hide(){
@@ -73,14 +75,30 @@ export default {
     selectItem(item,index){
       if(this.mode === playMode.random){
           index = this.playlist.findIndex((song) => {
-            return  song.id= item.id
+            return  song.id === item.id
           })
       }
       this.setCurrentIndex(index)
+      this.setPlayingState(true)
+    },
+    scrollToCurrent(current){
+      const index = this.sequenceList.findIndex((song) => {
+        return current.id = song.id
+      })
+      this.$refs.listContent.scrollToElement(this.$refs.listItem[index],300)
     },
     ...mapMutations({
-        setCurrentIndex : 'SET_CURRENT_INDEX'
+        setCurrentIndex : 'SET_CURRENT_INDEX',
+        setPlayingState : 'SET_PLAYING_STATE'
     })
+  },
+  watch : {
+    currentSong(newSong,oldSong){
+      if(!this.showFlag||newSong.id === oldSong.id){
+        return
+      }
+      this.scrollToCurrent(newSong)
+    }
   },
   components:{
     Scroll

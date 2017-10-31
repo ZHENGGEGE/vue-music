@@ -6,6 +6,10 @@
 
 <script>
   import BScroll from 'better-scroll'
+
+  const DIRECTION_H = 'horizontal'
+  const DIRECTION_V = 'vertical'
+
   export default {
     props: {
       probeType: {
@@ -31,21 +35,30 @@
       beforeScroll : {
         type : Boolean,
         default : false
+      },
+      refreshDelay: {
+        type: Number,
+        default: 20
+      },
+      direction: {
+        type: String,
+        default: DIRECTION_V
       }
     },
     mounted() {
         setTimeout(()=>{
             this._initScroll()
-        })
+        },20)
     },
     methods: {
       _initScroll(){
         if (!this.$refs.wrapper) {
           return
         }
-        this.scroll = new BScroll(this.$refs.wrapper, {
+         this.scroll = new BScroll(this.$refs.wrapper, {
           probeType: this.probeType,
-          click: this.click
+          click: this.click,
+          eventPassthrough: this.direction === DIRECTION_V ? DIRECTION_H : DIRECTION_V
         })
         if(this.listenScroll){
             let me = this
@@ -87,7 +100,7 @@
       data() {
         setTimeout(() => {
           this.refresh()
-        }, 20)
+        },this.refreshDelay)
       }
     }
   }

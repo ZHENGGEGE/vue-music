@@ -52,12 +52,14 @@
      }
    },
    created() {
-     setTimeout(() => {
-       this._getRecommend()
-     }, 1000)
-
+     this._getRecommend()
      this._getDiscList()
    },
+   activated() {
+      setTimeout(() => {
+        this.$refs.slider && this.$refs.slider.refresh()
+      }, 20)
+    },
    methods: {
      handlePlaylist(playlist){
         const bottom = playlist.length > 0 ? '60px' : ''
