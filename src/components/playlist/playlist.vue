@@ -72,20 +72,21 @@ export default {
       }
       return ''
     },
-    selectItem(item,index){
-      if(this.mode === playMode.random){
+    selectItem(item, index) {
+        if (this.mode === playMode.random) {
           index = this.playlist.findIndex((song) => {
-            return  song.id === item.id
+            return song.id === item.id
           })
-      }
-      this.setCurrentIndex(index)
-      this.setPlayingState(true)
-    },
+        }
+        this.setCurrentIndex(index)
+        this.setPlayingState(true)
+      },
     scrollToCurrent(current){
       const index = this.sequenceList.findIndex((song) => {
-        return current.id = song.id
+        return current.id === song.id
       })
       this.$refs.listContent.scrollToElement(this.$refs.listItem[index],300)
+      //this.$refs.listContent.scrollToElement(this.$refs.list.$el.children[index], 300)
     },
     ...mapMutations({
         setCurrentIndex : 'SET_CURRENT_INDEX',
@@ -97,7 +98,10 @@ export default {
       if(!this.showFlag||newSong.id === oldSong.id){
         return
       }
-      this.scrollToCurrent(newSong)
+      //this.scrollToCurrent(newSong)
+      setTimeout(() => {
+          this.scrollToCurrent(newSong)
+        }, 20)
     }
   },
   components:{
