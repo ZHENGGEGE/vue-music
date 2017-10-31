@@ -10,18 +10,18 @@
                     </h1>
                 </div>
                 <scroll class="list-content" :data="sequenceList" ref="listContent">
-                    <ul>
-                        <li class="item" v-for="(item,index) in sequenceList" @click="selectItem(item,index)" ref="listItem">
+                    <transition-group name="list" tag="ul">
+                        <li :key="item.id" class="item" v-for="(item,index) in sequenceList" @click="selectItem(item,index)" ref="listItem">
                             <i class="current" :class="getCurrentIcon(item)"></i>
                             <span class="text">{{item.name}}</span>
                             <span class="like">
                                 <i class="icon-not-favorite"></i>
                             </span>
-                            <span class="delete">
+                            <span class="delete" @click.stop="deleteOne(item)">
                                 <i class="icon-delete"></i>
                             </span>
                         </li>
-                    </ul>
+                    </transition-group>
                 </scroll>
                 <div class="list-operate">
                     <div class="add">
@@ -37,7 +37,7 @@
     </transition>  
 </template>
 <script>
-import {mapGetters,mapMutations} from 'vuex'
+import {mapGetters,mapMutations,mapActions} from 'vuex'
 import Scroll from 'base/scroll/scroll'
 import {playMode} from 'common/js/config'
 
@@ -88,10 +88,19 @@ export default {
       this.$refs.listContent.scrollToElement(this.$refs.listItem[index],300)
       //this.$refs.listContent.scrollToElement(this.$refs.list.$el.children[index], 300)
     },
+    deleteOne(item){
+      this.deleteSong(item)
+      if(!this.playlist.length){
+        this.hide()
+      }
+    },
     ...mapMutations({
         setCurrentIndex : 'SET_CURRENT_INDEX',
         setPlayingState : 'SET_PLAYING_STATE'
-    })
+    }),
+    ...mapActions([
+      'deleteSong'
+    ])
   },
   watch : {
     currentSong(newSong,oldSong){
