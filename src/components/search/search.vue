@@ -4,7 +4,7 @@
       <search-box ref="searchBox" @query="onQueryChange"></search-box>
     </div>
     <div class="shortcut-wrapper" v-show="!query" ref="shortcutWrapper">
-      <scroll class="shortcut" :data="shortcut" ref="shortcut">
+      <scroll class="shortcut" :refreshDelay="refreshDelay" :data="shortcut" ref="shortcut">
         <div>
           <div class="hot-key">
             <h1 class="title">热门搜索</h1>
@@ -76,9 +76,9 @@ import {playlistMixin,searchMixin} from 'common/js/mixin'
             }
           })
         },
-        addQuery(query) {
-          this.$refs.searchBox.setQuery(query)
-        },
+         addQuery(query) {
+            this.$refs.searchBox.setQuery(query)
+          },
         showConfirm(){
           this.$refs.confirm.show()
         },
