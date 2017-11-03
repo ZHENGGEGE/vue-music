@@ -13,11 +13,11 @@ export default {
             default : 2000
         }
     },
-  data(){
-      return{
-          showFlag : false
-      }
-  },
+    data(){
+        return{
+            showFlag : false
+        }
+    },
   methods:{
       show(){
           this.showFlag = true
